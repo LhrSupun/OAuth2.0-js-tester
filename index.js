@@ -30,7 +30,7 @@ const getTokenGenerator = () => {
                 const token = await getToken(accessTokenUrl, clientId, clientSecret, scope);
                 response = token;
                 expires_in = now + token.expires_in;
-                console.log(`new token generated. Expires in ${expires_in} seconds`);
+                console.log(`new token generated. Expires in ${now + token.expires_in} seconds`);
                 return response;
             } catch (error) {
                 console.error("Error while fetching access token:", error);
