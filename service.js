@@ -1,7 +1,6 @@
 const request = require('request');
 const dotenv = require('dotenv');
 dotenv.config();
- // For making HTTP requests
 
 const accessTokenUrl = process.env.ACCESS_TOKEN_URL;
 const clientId = process.env.CLIENT_ID;
