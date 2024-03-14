@@ -1,7 +1,5 @@
 const express = require('express');
 const getToken = require('./service');
-const dotenv = require('dotenv');
-dotenv.config();
 
 const app = express();
 
@@ -21,13 +19,8 @@ const getTokenGenerator = () => {
         const now = Math.floor(Date.now() / 1000); // in seconds
         // minutes
         if (!response || now >= expires_in) {
-            const accessTokenUrl = process.env.ACCESS_TOKEN_URL;
-            const clientId = process.env.CLIENT_ID;
-            const clientSecret = process.env.CLIENT_SECRET;
-            const scope = process.env.SCOPE;
-
             try {
-                const token = await getToken(accessTokenUrl, clientId, clientSecret, scope);
+                const token = await getToken();
                 response = token;
                 expires_in = now + token.expires_in;
                 console.log(`new token generated. Expires in ${now + token.expires_in} seconds`);

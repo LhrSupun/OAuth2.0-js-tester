@@ -1,5 +1,14 @@
-const request = require('request'); // For making HTTP requests
-function getToken(accessTokenUrl, clientId, clientSecret, scope) {
+const request = require('request');
+const dotenv = require('dotenv');
+dotenv.config();
+ // For making HTTP requests
+
+const accessTokenUrl = process.env.ACCESS_TOKEN_URL;
+const clientId = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
+const scope = process.env.SCOPE;
+
+function getToken() {
     const buff = Buffer.from(`${clientId}:${clientSecret}`);
     const authHeader = `Basic ${buff.toString('base64')}`;
 
